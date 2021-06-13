@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <fluidsynth.h>
+#include "fluidsynth.h"
 
 
 typedef struct preset_list{

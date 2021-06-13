@@ -20,12 +20,26 @@ def list_presets(str sfpath):
     """
     List the presets in a soundfont
 
+    ## Example
+    
+    ```python
+
+    import fluidtools
+    presets = fluidtools.list_presets("/path/to/soundfont.sf2")
+    for preset in presets:
+        bank, num, name = preset
+        print(f"Bank: {bank}, Num: {num}, Name: {name}")
+
+    ```
+    
     Args:
-        sfpath (str): the path to the soundfont
+        sfpath: (str) the path to the soundfont
 
     Returns:
         (list[tuple[int, int, str]) - a list of tuples of the form 
         (bank:int, num:int, name:str)
+
+    
     """
     if not os.path.exists(sfpath):
         raise OSError("Soundfont path not found")

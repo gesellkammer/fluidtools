@@ -14,8 +14,7 @@ PROJ=$1
 # $ git clone ...
 # $ cd ...
 # $ ./configure && make && make install
-yum install -y fluidsynth
-
+yum --enablerepo=epel-testing install -y fluidsynth-devel
 
 # Compile wheels. Customize the wildcard to match the desired python versions
 for PYBIN in /opt/python/cp3[8-9]*/bin; do

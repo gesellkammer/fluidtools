@@ -22,7 +22,7 @@ jobs:
       - name: Install deps linux
         if: runner.os == 'linux'
         run: |
-          apt install libfluidsynth-dev
+          sudo apt-get install libfluidsynth-dev
 
       - name: Instal deps windows 
         if: runner.os == 'windows'

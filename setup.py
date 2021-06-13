@@ -3,7 +3,7 @@
 from setuptools import setup, Extension
 import sys
 
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 
 include_dirs = []
 library_dirs = []

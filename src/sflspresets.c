@@ -57,7 +57,8 @@ preset_list_t *_list_presets(const char *sfpath) {
         preset_list_last = newpreset;
     }
 EXIT:
-    free(sf);
-    free(settings);
+    // delete_fluid_sfont(sfont);
+    delete_fluid_synth(sf);
+    delete_fluid_settings(settings);
     return preset_list_head;
 }

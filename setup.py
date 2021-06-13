@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from setuptools import setup, Extension
+import sys
 
 VERSION = '0.1.0'
 
@@ -8,7 +9,7 @@ include_dirs = []
 library_dirs = []
 compile_args = []
 
-if platform == 'Darwin':
+if sys.platform == 'darwin':
     include_dirs.append("/usr/local/include/")
     include_dirs.append("/opt/local/include/")
 
@@ -20,7 +21,7 @@ if platform == 'Darwin':
         '-Werror-implicit-function-declaration',
         '-Wfatal-errors'
     ]
-elif platform == 'Linux':
+elif sys.platform == 'linux':
     include_dirs.extend(['usr/include', '/usr/local/include'])
     library_dirs.append("/usr/local/lib")
     compile_args += [

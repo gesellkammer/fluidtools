@@ -28,6 +28,7 @@ jobs:
         if: runner.os == 'windows'
         run: |
           choco install fluidsynth 
+          choco list --local-only --exact fluidsynth --trace
           
       - uses: actions/checkout@v2
 

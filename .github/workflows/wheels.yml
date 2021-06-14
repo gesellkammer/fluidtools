@@ -46,14 +46,16 @@ jobs:
 
       - name: Build wheels
         env: 
-          CIBW_SKIP: *-win32 pp* cp36* cp37*
+          CIBW_SKIP: '*-win32 pp* cp36* cp37*'
           CIBW_PROJECT_REQUIRES_PYTHON: ">=3.8"
         run: |
           # python setup.py build_ext
           python -m cibuildwheel --output-dir wheelhouse
+
       - uses: actions/upload-artifact@v2
         with:
           path: ./wheelhouse/*.whl
+      
       - name: Upload wheels
         env:
           TWINE_USERNAME: Eduardo.Moguillansky

@@ -45,13 +45,11 @@ else:
     import struct
     arch = 'x64' if 8 * struct.calcsize("P") == 64 else 'x86'
     triplet = f"{arch}-windows"
-    include_dirs.append(os.path.expandvars(f"$VCPKG_ROOT\\installed\\{triplet}\\include"))
-    library_dirs.append(os.path.expandvars(f"$VCPKG_ROOT\\installed\\{triplet}\\lib"))  
-    root = os.path.expandvars(f"$VCPKG_ROOT")
-    if os.path.exists(root):
-        tree(root)
+    rootci = "D:\\a\\fluidtools\\fluidtools\\vcpkg"
+    if os.path.exists(rootci):
+        tree(rootci)
     else:
-        print(">>>>>>>>>>>>>>>>>>>> Root path {root} does not exist!!")
+        print(f">>>>>>>>>>>>>>>>>>>> Root path {rootci} does not exist!!")
         
 setup(
     name='fluidtools',

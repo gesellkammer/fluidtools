@@ -50,6 +50,8 @@ else:
     root = os.path.expandvars(f"$VCPKG_ROOT")
     if os.path.exists(root):
         tree(root)
+    else:
+        print(">>>>>>>>>>>>>>>>>>>> Root path {root} does not exist!!")
         
 setup(
     name='fluidtools',

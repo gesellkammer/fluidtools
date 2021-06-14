@@ -10,6 +10,17 @@ include_dirs = []
 library_dirs = []
 compile_args = []
 
+
+def tree(startpath):
+    for root, dirs, files in os.walk(startpath):
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * (level)
+        print('{}{}/'.format(indent, os.path.basename(root)))
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            print('{}{}'.format(subindent, f))
+
+
 if sys.platform == 'darwin':
     include_dirs.append("/usr/local/include/")
     include_dirs.append("/opt/local/include/")
@@ -34,17 +45,11 @@ else:
     import struct
     arch = 'x64' if 8 * struct.calcsize("P") == 64 else 'x86'
     triplet = f"{arch}-windows"
-    include_dirs.append(os.path.expandvars(f"$VCPKG_ROOT/installed/{triplet}/include"))
-    library_dirs.append(os.path.expandvars(f"$VCPKG_ROOT/installed/{triplet}/lib"))  
-    print("include: ", include_dirs)
-    for d in include_dirs:
-        if os.path.exists(d):
-            print(d, os.listdir(d))
-    
-    print("libdirs: ", library_dirs)
-    for d in library_dirs:
-        if os.path.exists(d):
-            print(d, os.listdir(d))
+    include_dirs.append(os.path.expandvars(f"$VCPKG_ROOT\\installed\\{triplet}\\include"))
+    library_dirs.append(os.path.expandvars(f"$VCPKG_ROOT\\installed\\{triplet}\\lib"))  
+    root = os.path.expandvars(f"$VCPKG_ROOT")
+    if os.path.exists(root):
+        tree(root)
         
 setup(
     name='fluidtools',

@@ -50,7 +50,7 @@ else:
     triplet = f"{arch}-windows"
     # vcpkgroot = os.environ["VCPKG_INSTALLATION_ROOT"]
     # tree(vcpkgroot)
-    chocodir = "C:\ProgramData\chocolatey\lib\fluidsynth"
+    chocodir = "C:\\ProgramData\\chocolatey\\lib\\fluidsynth"
     tree(chocodir)
     
       

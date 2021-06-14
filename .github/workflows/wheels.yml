@@ -10,6 +10,7 @@ jobs:
       matrix:
         # os: [macOS-10.15, windows-2019]
         os: [windows-2019]
+        targetplatform: [x64]
         # os: [ubuntu-20.04, windows-2019, macOS-10.15]
     
     steps:
@@ -25,11 +26,11 @@ jobs:
           sudo apt-get install libfluidsynth-dev
 
       - name: Instal deps windows 
-        if: runner.os == 'windows'
+        if: runner.os == 'windows' and 
         uses: lukka/run-vcpkg@v6
         with:
-          vcpkgArguments: fluidsynth:x64-windows
-          vcpkgTriplet: x64-windows
+          vcpkgArguments: fluidsynth:${{ matrix.targetplatform }}-windows
+          vcpkgTriplet: ${{ matrix.targetplatform }}-windows
           vcpkgGitCommitId: "0bf3923f9fab4001c00f0f429682a0853b5749e0"
         # run: |
           # choco install fluidsynth 

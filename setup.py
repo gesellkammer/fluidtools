@@ -32,7 +32,7 @@ elif sys.platform == 'linux':
     ]
 else:
     import struct
-    arch = 'x64' if ( 8 * struct.calcsize("P") == 64 else 'x86'
+    arch = 'x64' if 8 * struct.calcsize("P") == 64 else 'x86'
     triplet = f"{arch}-windows"
     include_dirs.append(os.path.expandvars(f"$VCPKG_ROOT/installed/{triplet}/include"))
     library_dirs.append(os.path.expandvars(f"$VCPKG_ROOT/installed/{triplet}/lib"))  

@@ -48,10 +48,10 @@ else:
     import struct
     arch = 'x64' if 8 * struct.calcsize("P") == 64 else 'x86'
     triplet = f"{arch}-windows"
-    # vcpkgroot = os.environ["VCPKG_INSTALLATION_ROOT"]
-    # tree(vcpkgroot)
     chocodir = "C:\\ProgramData\\chocolatey\\lib\\fluidsynth"
     tree(chocodir)
+    include_dirs.append('C:\\ProgramData\\chocolatey\\lib\\fluidsynth\\tools\\include')
+    library_dirs.append('C:\\ProgramData\\chocolatey\\lib\\fluidsynth\\tools\\lib')
     
       
 setup(

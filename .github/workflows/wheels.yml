@@ -25,18 +25,17 @@ jobs:
         run: |
           sudo apt-get install libfluidsynth-dev
 
-      - name: Instal deps windows 
-        if: runner.os == 'windows'
-        uses: lukka/run-vcpkg@v6
-        with:
-          vcpkgArguments: fluidsynth:${{ matrix.targetplatform }}-windows
-          vcpkgTriplet: ${{ matrix.targetplatform }}-windows
-          vcpkgGitCommitId: "0bf3923f9fab4001c00f0f429682a0853b5749e0"
+      #- name: Instal deps windows 
+      #  if: runner.os == 'windows'
+      #  uses: lukka/run-vcpkg@v6
+      #  with:
+      #    vcpkgArguments: fluidsynth:${{ matrix.targetplatform }}-windows
+      #    vcpkgTriplet: ${{ matrix.targetplatform }}-windows
+      #    vcpkgGitCommitId: "0bf3923f9fab4001c00f0f429682a0853b5749e0"
 
-      - name: windows debug
+      - name: windows deps
         if: runner.os == 'windows'
         run: |
-          vcpkg integrate install
           choco install fluidsynth 
           choco list --local-only --exact fluidsynth --trace
           

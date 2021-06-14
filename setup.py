@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, Extension
 import sys
+import os
 
 VERSION = '0.2.0'
 
@@ -30,8 +31,10 @@ elif sys.platform == 'linux':
         '-Wfatal-errors'
     ]
 else:
-    pass
-
+    include_dirs.append(os.path.expandvars("$VCPKG_ROOT/installed/$TRIPLET/include"))
+    library_dirs.append(os.path.expandvars("$VCPKG_ROOT/installed/$TRIPLET/lib"))
+    print("include: ", include_dirs)
+    print("libdirs: ", library_dirs)
 
 setup(
     name='fluidtools',

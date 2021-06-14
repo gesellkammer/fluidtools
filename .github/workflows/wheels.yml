@@ -39,7 +39,7 @@ jobs:
           vcpkg integrate install
           choco install fluidsynth 
           choco list --local-only --exact fluidsynth --trace
-  
+          
       - uses: actions/checkout@v2
 
       # Used to host cibuildwheel

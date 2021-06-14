@@ -12,6 +12,9 @@ compile_args = []
 
 
 def tree(startpath):
+    if not os.path.exists(startpath):
+        print(f">>>>>>>>>>>> dir {startpath} does not exist")
+        return
     for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
         indent = ' ' * 4 * (level)
@@ -46,11 +49,11 @@ else:
     arch = 'x64' if 8 * struct.calcsize("P") == 64 else 'x86'
     triplet = f"{arch}-windows"
     vcpkgroot = os.environ["VCPKG_INSTALLATION_ROOT"]
-    if os.path.exists(vcpkgroot):
-        tree(vcpkgroot)
-    else:
-        print(f">>>>>>>>>>>>>>>>>>>> Root path {vcpkgroot} does not exist!!")
-        
+    tree(vcpkgroot)
+    chocoir = "C:\ProgramData\chocolatey\lib\fluidsynth"
+    tree(chocodir)
+    
+      
 setup(
     name='fluidtools',
     python_requires='>=3.8',

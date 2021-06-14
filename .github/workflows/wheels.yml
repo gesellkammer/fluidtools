@@ -46,7 +46,8 @@ jobs:
 
       - name: Build wheels
         env: 
-          CIBW_SKIP: *-win32 pp* cp36* cp37* 
+          CIBW_SKIP: *-win32 pp* cp36* cp37*
+          CIBW_PROJECT_REQUIRES_PYTHON: ">=3.8"
         run: |
           # python setup.py build_ext
           python -m cibuildwheel --output-dir wheelhouse

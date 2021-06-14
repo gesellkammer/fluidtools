@@ -31,11 +31,19 @@ elif sys.platform == 'linux':
         '-Wfatal-errors'
     ]
 else:
-    include_dirs.append(os.path.expandvars("$VCPKG_ROOT/installed/$TRIPLET/include"))
-    library_dirs.append(os.path.expandvars("$VCPKG_ROOT/installed/$TRIPLET/lib"))
+    import struct
+    arch = 'x64' if ( 8 * struct.calcsize("P") == 64 else 'x86'
+    triplet = f"{arch}-windows"
+    include_dirs.append(os.path.expandvars(f"$VCPKG_ROOT/installed/{triplet}/include"))
+    library_dirs.append(os.path.expandvars(f"$VCPKG_ROOT/installed/{triplet}/lib"))  
     print("include: ", include_dirs)
+    for d in include_dirs:
+        print(d, os.listdir(d))
+    
     print("libdirs: ", library_dirs)
-
+    for d in library_dirs:
+        print(d, os.listdir(d))
+        
 setup(
     name='fluidtools',
     python_requires='>=3.8',

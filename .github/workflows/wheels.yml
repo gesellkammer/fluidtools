@@ -26,9 +26,14 @@ jobs:
 
       - name: Instal deps windows 
         if: runner.os == 'windows'
-        run: |
-          choco install fluidsynth 
-          choco list --local-only --exact fluidsynth --trace
+        uses: lukka/run-vcpkg@v6
+        with:
+          vcpkgArguments: fluidsynth:x64-windows
+          vcpkgTriplet: x64-windows
+          vcpkgGitCommitId: "0bf3923f9fab4001c00f0f429682a0853b5749e0"
+        # run: |
+          # choco install fluidsynth 
+          # choco list --local-only --exact fluidsynth --trace
           
       - uses: actions/checkout@v2
 

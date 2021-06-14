@@ -38,11 +38,13 @@ else:
     library_dirs.append(os.path.expandvars(f"$VCPKG_ROOT/installed/{triplet}/lib"))  
     print("include: ", include_dirs)
     for d in include_dirs:
-        print(d, os.listdir(d))
+        if os.path.exists(d):
+            print(d, os.listdir(d))
     
     print("libdirs: ", library_dirs)
     for d in library_dirs:
-        print(d, os.listdir(d))
+        if os.path.exists(d):
+            print(d, os.listdir(d))
         
 setup(
     name='fluidtools',
